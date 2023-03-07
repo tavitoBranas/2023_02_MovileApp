@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <link type="text/css" rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
+    <title>Obligatorio TDM</title>
+</head>
+<body>
+    <ion-app>
+        <ion-router id="router">
+            <ion-route url="/" component="page-inicio"></ion-route>
+            <ion-route url="/login" component="page-login"></ion-route>
+            <ion-route url="/registro" component="page-registro"></ion-route>
+            <ion-route url="/realizarmovimientos" component="page-realizarmovimientos"></ion-route>
+            <ion-route url="/listarmovimientos" component="page-listarmovimientos"></ion-route>
+            <ion-route url="/cajeros" component="page-cajeros"></ion-route>
+            <ion-route url="/compartir" component="page-compartir"></ion-route>
+        </ion-router>
+        <ion-nav></ion-nav>
+
+        <!--                              MENU                               -->
+        <ion-menu side="start" menu-id="first" content-id="main" id="menuPrincipal">
+            <ion-header>
+                <ion-toolbar color="tertiary">
+                    <ion-title>Menu Principal</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding" id="menuOpciones">
+                <!--aca se generara los menu segun se encuentre o no logueado, trabajaremos con JS y carga dinamica-->
+            </ion-content>
+        </ion-menu>
+        <div id="main"></div>
+
+        <!--                              INICIO                               -->
+        <page-inicio class="ion-page" id="inicio">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title></ion-title>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+                <h1> Dwallet</h1>
+                <h1 id="msjBienvenida"></h1>
+                <p>
+                    Esta aplicación le permitirá llevar un control sobre sus ingresos y gastos, realizar transacciones,
+                    consultar cajeros cercanos y más.
+                </p>
+            </ion-content>
+        </page-inicio>
+
+        <!--                              LOGIN                               -->
+        <page-login class="ion-page" id="logIn">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title></ion-title>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+                <h2>Ingreso</h2>
+                <ion-list>
+                    <form action="#">
+                        <ion-label for="logUsuario" position="floating">Usuario</ion-label>
+                        <ion-input type="text" id="usuario" placeholder="Ingrese"></ion-input>
+                        <ion-label for="logPassword" position="floating">Password</ion-label>
+                        <ion-input type="password" id="password" placeholder="Ingrese"></ion-input>
+                        <ion-button id="btnLoguear" fill="outline" expand="block" color="tertiary">Ingresar</ion-button>
+                        <p id="pTxtLogin"></p>
+                    </form>
+                </ion-list>
+            </ion-content>
+        </page-login>
+
+        <!--                              REGISTRO                               -->
+        <page-registro class="ion-page" id="registro">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title></ion-title>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+                <h2>Registrarse</h2>
+                <form action="#">
+                    <ion-label for="regUsuario" position="floating">Usuario</ion-label>
+                    <ion-input type="text" id="regUsuario" placeholder="Ingrese"></ion-input>
+                    <ion-label for="regPassword" position="floating">Password</ion-label>
+                    <ion-input type="password" id="regPassword" placeholder="Ingrese"></ion-input>
+                    <ion-label for="regDep" position="floating">Departamento</ion-label>
+                    <ion-select id="sclDepto" interface="popover" placeholder="Seleccione departamento"></ion-select>
+                    <article id="mostrarCuidades">
+                        <ion-label for="regCiudad" id="regCiudad" position="floating">Ciudad</ion-label></br>
+                        <ion-select id="sclCiudad" interface="popover" placeholder="Seleccione localidad"></ion-select>
+                    </article>
+                    <br /><ion-button id="btnRegistrar" fill="outline" expand="block" color="tertiary">Registrar</ion-button>
+                    <p id="pTxtRegistro"></p>
+                </form>
+            </ion-content>
+        </page-registro>
+
+        <!--                              REALIZAR MOVIMIENTOS                               -->
+        <page-realizarmovimientos class="ion-page" id="realizarMovimientos">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title></ion-title>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+                <h2>Agregar Movimiento</h2>
+                <div style="margin-bottom: 100px">
+                    <form action="#">
+                        <ion-select style="text-align:center" id="slcTipoMovimiento" interface="popover" placeholder="Seleccione tipo">
+                            <ion-select-option value="egreso"><b>EGRESO</b></ion-select-option>
+                            <ion-select-option value="ingreso"><b>INGRESO</b></ion-select-option>
+                        </ion-select><br />
+                        <article id="cargaMovimiento"></article>
+                        <ion-button id="btnAgregarMovimiento" fill="outline" expand="block" color="tertiary">Agregar movimiento</ion-button>
+                    </form>
+                </div>
+                <p id="pTxtAgregarMovimiento"></p>
+            </ion-content>
+        </page-realizarmovimientos>
+
+        <!--                              LISTAR MOVIMIENTOS                               -->
+        <page-listarmovimientos class="ion-page" id="listarMovimientos">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title></ion-title>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+                <div id="resumenMovimientos">
+                    <h2> Resumen de movimientos</h2>
+                    <ion-item>
+                        <ion-label>
+                            <h2>Balance general</h2>
+                            <b style="text-align:center"><p id="mostrarBalanceGeneralP" style="color:green"></p></b>
+                            <b style="text-align:center"><p id="mostrarBalanceGeneralN" style="color:red"></p></b>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <h2>Ingresos</h2>
+                            <b><p id="mostrarIngresoTotal" style="text-align:center"></p></b>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <h2>Gastos</h2>
+                            <b><p id="mostrarGastoTotal" style="text-align:center"></p></b>
+                        </ion-label>
+                    </ion-item>
+                </div><br />
+                <div style="margin-bottom: 100px">
+                    <h2>Listado de movimientos</h2>
+                    <ion-select name="" id="slcFiltro" interface="popover" placeholder="Seleccione tipo de movimiento">
+                        <ion-select-option value="total" selected="total">Movimientos totales</ion-select-option>
+                        <ion-select-option value="egresos">Egresos</ion-select-option>
+                        <ion-select-option value="ingresos">Ingresos</ion-select-option>
+                    </ion-select><br />
+                    <i><p id="msjMovimiento"></p></i>
+                    <spam id="tablaMovimientos"></spam>
+                    <br /><p id="pTxtListado"></p>
+                </div>
+            </ion-content>
+        </page-listarmovimientos>
+
+        <!--                              CAJEROS                               -->
+        <page-cajeros class="ion-page" id="cajeros">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title></ion-title>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+                <article id="mapRadio">
+                    <h2>Cajeros cercanos</h2>
+                    <form action="#" id="formCajero">
+                        <ion-item lines='none'>
+                            <ion-label style="text-align:center" for="radioInput" position="floating">Radio de búsqueda</ion-label>
+                        </ion-item>
+                        <ion-item lines='none'>
+                            <ion-input style="text-align:center" type="number" id="radioInput" placeholder="Ingrese valor en metros"></ion-input>
+                        </ion-item>
+                        <ion-button id="btnBusqueda" fill="outline" expand="block" color="tertiary">Buscar</ion-button>
+                    </form>
+                </article>
+                <article id="map">
+                </article>
+            </ion-content>
+        </page-cajeros>
+
+        <!--                              COMPARTIR                               -->
+        <page-compartir class="ion-page" id="compartir">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title></ion-title>
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+                <article>
+                    <h2>Compartir</h2>
+                    <ion-item lines="none"><item-label style="text-align:center">Utilice este boton para compartir con sus amigos esta app</item-label></ion-item><br/>
+                    <ion-button fill="outline" expand="block" color="tertiary" onclick="Share()" id="btnCompartir">Compartir aplicación</ion-button>
+                </article>
+            </ion-content>
+        </page-compartir>
+
+        <!--                              FOOTER                               -->
+        <ion-footer>
+            <ion-toolbar>
+                <ion-title style="text-align:center">Dwallet 2023</ion-title>
+            </ion-toolbar>
+        </ion-footer>
+    </ion-app>
+
+    <script src="./js/estructuras.js"></script>
+    <script src="./js/displays.js"></script>
+    <script src="./js/fetchAPI.js"></script>
+    <script src="./js/funcionesAuxiliares.js"></script>
+    <script src="./js/precarga.js"></script>
+    <script src="./js/validacion.js"></script>
+    <script src="./js/index.js"></script>
+
+</body>
+</html>

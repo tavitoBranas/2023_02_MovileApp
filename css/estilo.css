@@ -1,0 +1,73 @@
+h1, h2, h3 {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    justify-items: center;
+}
+
+fieldset {
+    width: 50vh;
+    border-style: groove;
+}
+
+input {
+    display: block;
+    background-color: rgb(144, 184, 206);
+    margin-bottom: 20px;
+}
+
+ion-menu::part(backdrop) {
+    background-color: rgba(0, 0, 255, 0.4);
+}
+
+ion-menu::part(container) {
+    border-radius: 0 20px 20px 0;
+    box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+}
+
+ion-loading.custom-loading {
+    --background: #e3edff;
+    --spinner-color: #1c6dff;
+    color: #1c6dff;
+}
+
+ion-alert.custom-alert {
+    --backdrop-opacity: 0.7;
+    --text-align:center;
+}
+
+.custom-alert .alert-button-group {
+    padding: 8px;
+}
+
+button.alert-button.alert-button-confirm {
+    background-color:lightskyblue;
+    color: black;
+}
+
+.md button.alert-button.alert-button-confirm {
+    border-radius: 4px;
+}
+
+.ios .custom-alert button.alert-button {
+    border: 0.55px solid black;
+}
+
+.ios button.alert-button.alert-button-cancel {
+    border-right: 0;
+    border-bottom-left-radius: 13px;
+    border-top-left-radius: 13px;
+}
+
+.ios button.alert-button.alert-button-confirm {
+    border-bottom-right-radius: 13px;
+    border-top-right-radius: 13px;
+}
+
+#map {
+    height: 680px;
+}

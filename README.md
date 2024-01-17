@@ -1,12 +1,12 @@
 # Aplicacion movil desarrollada con JavaScript y el framework Ionic.
 
 En esta aplicacion movil, se permite al usuario registrado:
-    - registrar usuarios
-    - logear usuarios
-    - analizar el estado de su cuenta bancaria diferenciando entre depositos y retiros.
-    - registrar un retiro o deposito
-    - emplear el GPS del celular para ubicar cajeros habilitados a un radio definido. La aplicacion muestra cajeros que permiten retiro, deposito de dinero o ambos.
-    -compartir la aplicacion mediante Whatsapp
+- registrar usuarios
+- logear usuarios
+- analizar el estado de su cuenta bancaria diferenciando entre depositos y retiros.
+- registrar un retiro o deposito
+- emplear el GPS del celular para ubicar cajeros habilitados a un radio definido. La aplicacion muestra cajeros que permiten retiro, deposito de dinero o ambos.
+-compartir la aplicacion mediante Whatsapp
     
 Esta aplicacion consume recursos de una API proporcinada por la ORT.
 

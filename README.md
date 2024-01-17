@@ -1,14 +1,14 @@
-# Aplicacion movil desarrollada con JavaScript y Ionic.
+# Aplicación móvil desarrollada con JavaScript y Ionic.
 
-En esta aplicacion movil, se permite:
-- emplear el GPS del celular para ubicar cajeros habilitados a un radio definido. La aplicacion muestra cajeros que permiten retiro, deposito de dinero o ambos.
+En esta aplicación móvil, se permite:
+- emplear el GPS del celular para ubicar cajeros habilitados a un radio definido. La aplicacion muestra cajeros que permiten retiro, deposito de dinero o ambos. 
+  La ubicación de los cajeros se obtiene desde una API externa.
 - registrar usuarios
-- logear usuarios
-- analizar el estado de su cuenta bancaria diferenciando entre depositos y retiros.
-- registrar un retiro o deposito
-- compartir la aplicacion mediante Whatsapp (ejecutando la app de Whatsapp)
-    
-Esta aplicacion consume recursos de una API proporcinada por la ORT.
+- loguear usuarios
+- analizar el estado de su cuenta bancaria diferenciando entre depósitos y retiros.
+- registrar un retiro o depósito
+- compartir la aplicación mediante Whatsapp (ejecutando la app de Whatsapp)
+- servidor y base de datos donde se guarda la información de los usuarios registradosó
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

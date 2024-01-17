@@ -1,4 +1,4 @@
-# Aplicacion movil para ubicacion de cajeros empleando JavaScript y el framework Ionic.
+# Aplicacion movil desarrollada con JavaScript y el framework Ionic.
 
 En esta aplicacion movil, se permite al usuario registrado
     - registrar usuarios

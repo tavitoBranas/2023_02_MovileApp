@@ -1,6 +1,6 @@
 # Aplicacion movil desarrollada con JavaScript y Ionic.
 
-En esta aplicacion movil, se permite al usuario registrado:
+En esta aplicacion movil, se permite al usuario:
 - registrar usuarios
 - logear usuarios
 - analizar el estado de su cuenta bancaria diferenciando entre depositos y retiros.

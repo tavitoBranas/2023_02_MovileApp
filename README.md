@@ -1,5 +1,7 @@
 # Aplicación móvil desarrollada con JavaScript y Ionic.
 
+Tercera aplicación creada.
+
 En esta aplicación móvil, se permite:
 - emplear el GPS del celular para ubicar cajeros habilitados a un radio definido. La aplicacion muestra cajeros que permiten retiro, deposito de dinero o ambos. 
   La ubicación de los cajeros se obtiene desde una API externa.
